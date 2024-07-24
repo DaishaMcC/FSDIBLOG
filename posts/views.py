@@ -38,3 +38,8 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         post = self.get_object()
         return self.request.user == post.author
+    
+class PostUpdateToDraftView(UpdateView):
+    template_name = "posts/update_status.html"
+    model = Post
+    fields = ["status"]
